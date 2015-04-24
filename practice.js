@@ -74,9 +74,26 @@ crazyFunc(function(y) {
 }, 3);
 
 
+// OR have a limit function
+
+var callOnce = function(callback, numOfTimes) {
+  var x = 0;
+  return function() {
+      x += 1;
+      if (x < numOfTimes) {
+      callback();
+      } else {
+        return alert("STAHHP");
+      }
+    }
+  }
 
 
-
+var limitedFunc = callOnce(function(){alert('hi')}, 2);
+limitedFunc(); //hi
+limitedFunc(); //hi
+limitedFunc(); //STAHHP
+limitedFunc(); //STAHHP
 
 
 
